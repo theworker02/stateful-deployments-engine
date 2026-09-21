@@ -1,0 +1,39 @@
+# Binaries
+/bin/
+/sde
+/sde.exe
+*.exe
+*.test
+*.out
+
+# Demo media / .sde-proof
+/.sde-proof/
+/assets/demo/*.txt.bak
+
+# Evaluation runtime scratch (keep SUMMARY artifacts)
+/evaluation/.run/
+
+# Dependencies & IDE
+/vendor/
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Secrets & env
+.env
+.env.*
+!.env.example
+*.pem
+credentials.json
+
+# Coverage
+coverage.out
+coverage.html
+
+# Local build outputs (checksums may be committed)
+/dist/*.exe
+/dist/sde
+/dist/sde.exe
+/sde
+/sde.exe

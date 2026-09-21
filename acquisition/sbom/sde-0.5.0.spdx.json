@@ -1,0 +1,58 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "stateful-deployments-engine-0.5.0",
+  "documentNamespace": "https://github.com/theworker02/stateful-deployments-engine/spdx/0.5.0",
+  "creationInfo": {
+    "created": "2026-09-21T00:00:00Z",
+    "creators": ["Tool: sde-acquisition-sbom", "Person: theworker02"]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-SDE",
+      "name": "stateful-deployments-engine",
+      "versionInfo": "0.5.0",
+      "downloadLocation": "NOASSERTION",
+      "licenseConcluded": "LicenseRef-Proprietary-PreAcquisition",
+      "licenseDeclared": "LicenseRef-Proprietary-PreAcquisition",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-cobra",
+      "name": "github.com/spf13/cobra",
+      "versionInfo": "v1.8.1",
+      "downloadLocation": "https://github.com/spf13/cobra",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0"
+    },
+    {
+      "SPDXID": "SPDXRef-pflag",
+      "name": "github.com/spf13/pflag",
+      "versionInfo": "v1.0.5",
+      "downloadLocation": "https://github.com/spf13/pflag",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause"
+    },
+    {
+      "SPDXID": "SPDXRef-mousetrap",
+      "name": "github.com/inconshreveable/mousetrap",
+      "versionInfo": "v1.1.0",
+      "downloadLocation": "https://github.com/inconshreveable/mousetrap",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-SDE"
+    },
+    {
+      "spdxElementId": "SPDXRef-SDE",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-cobra"
+    }
+  ]
+}

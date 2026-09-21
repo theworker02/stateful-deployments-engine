@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Live Demo · SDE v1.1</title>
+  <link rel="icon" href="brand/favicon.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+
+  <section class="hero">
+    <div class="badges">
+      <span class="chip warn">BROWSER SIMULATION</span>
+      <span class="chip ok">v1.1.0</span>
+    </div>
+    <h1>Live demo</h1>
+    <p class="lede">
+      Interactive walkthrough of transactional cutover and source-independent restore.
+      No cloud credentials. No control-plane calls. Evidence of the real engine is produced by
+      <code>evaluate.ps1</code> locally.
+    </p>
+  </section>
+
+  <main>
+    <div class="notice warn">
+      This page is a <strong>labeled simulation</strong> for evaluators and GitHub Pages visitors.
+      Timing numbers in the interactive panel are illustrative. Measured CLI evidence is below and in <code>evaluation/</code>.
+    </div>
+
+    <article class="card" style="margin-bottom:1.25rem">
+      <h2>Proof GIFs (measured local run)</h2>
+      <p class="lede" style="margin:0 0 1rem">Captured from SDE v1.1.0 on the evaluation machine. Real CLI cutover on this host: barrier <strong>16.3&nbsp;ms</strong>, write pause <strong>14.8&nbsp;ms</strong>, 129 mutations synced.</p>
+      <div class="grid-2">
+        <figure>
+          <img src="demo-media/cutover-pipeline.gif" alt="Animated cutover pipeline phases" width="100%" loading="lazy"/>
+          <figcaption>Transactional cutover phases</figcaption>
+        </figure>
+        <figure>
+          <img src="demo-media/cli-doctor-demo.gif" alt="Animated CLI doctor and demo flow" width="100%" loading="lazy"/>
+          <figcaption>CLI: version → doctor → demo → readiness</figcaption>
+        </figure>
+        <figure>
+          <img src="demo-media/restore-independence.gif" alt="Animated source-independent restore" width="100%" loading="lazy"/>
+          <figcaption>ENGINE_PROVIDED restore after source destroy</figcaption>
+        </figure>
+        <figure>
+          <img src="demo-media/hero-card.png" alt="SDE hero proof card" width="100%" loading="lazy"/>
+          <figcaption>Acquisition-ready product card</figcaption>
+        </figure>
+      </div>
+      <p style="margin-top:1rem"><a href="proof.html">Full proof page</a> · transcripts in repo <code>assets/demo/</code></p>
+    </article>
+
+    <div class="sim-panel">
+      <div class="card">
+        <h2>State machine</h2>
+        <div id="pipeline" class="pipeline" aria-live="polite"></div>
+        <div class="cta-row" style="margin-top:1rem">
+          <button class="btn btn-primary" id="btn-cutover" type="button">Run cutover</button>
+          <button class="btn btn-ghost" id="btn-restore" type="button">Run restore independence</button>
+          <button class="btn btn-ghost" id="btn-clone" type="button">Run env clone</button>
+          <button class="btn btn-ghost" id="btn-fail" type="button">Inject failure</button>
+        </div>
+        <pre id="log" class="log" style="margin-top:1rem"></pre>
+      </div>
+      <div class="card">
+        <h2>Metrics</h2>
+        <div class="metrics">
+          <div class="metric"><div class="label">Mutations</div><div class="value" id="m-mutations">—</div></div>
+          <div class="metric"><div class="label">Write pause</div><div class="value" id="m-pause">—</div></div>
+          <div class="metric"><div class="label">RPO</div><div class="value" id="m-rpo">—</div></div>
+          <div class="metric"><div class="label">Result</div><div class="value" id="m-result">IDLE</div></div>
+        </div>
+        <div class="notice" style="margin-top:1rem">
+          Invariants (enforced in Go tests):
+          <ul>
+            <li>ACKNOWLEDGED_WRITES_MUST_NOT_BE_SILENTLY_LOST</li>
+            <li>STALE_EPOCH_MUST_NOT_MODIFY_NEWER_STATE</li>
+            <li>UNVERIFIED_STATE_MUST_NOT_BE_REPORTED_VERIFIED</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="shared.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>

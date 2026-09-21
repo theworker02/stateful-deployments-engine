@@ -1,0 +1,5 @@
+{
+  "note": "Regenerate with: sde benchmark — never hard-code production claims",
+  "phase": 3,
+  "status": "use benchmarks/results/latest.json when produced"
+}

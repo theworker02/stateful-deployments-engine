@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="SDE social">
+  <rect width="1200" height="630" fill="#0B3D2E"/>
+  <circle cx="220" cy="315" r="90" fill="#1F7A5C"/>
+  <path d="M175 315h90M220 270v90" stroke="#F7F4EF" stroke-width="14" stroke-linecap="round"/>
+  <text x="360" y="290" font-family="Georgia, serif" font-size="72" fill="#F7F4EF">Stateful Deployments Engine</text>
+  <text x="360" y="360" font-family="Georgia, serif" font-size="36" fill="#A8C4B8">Transactional cutover · portable recovery · v0.4.0</text>
+</svg>

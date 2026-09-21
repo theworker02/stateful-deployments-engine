@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Safety · SDE v1.1</title>
+  <link rel="icon" href="brand/favicon.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <section class="hero"><h1>Safety invariants</h1></section>
+  <main>
+    <article class="card">
+      <ul>
+        <li>ACKNOWLEDGED_WRITES_MUST_NOT_BE_SILENTLY_LOST</li>
+        <li>STALE_EPOCH_MUST_NOT_MODIFY_NEWER_STATE</li>
+        <li>UNVERIFIED_STATE_MUST_NOT_BE_REPORTED_VERIFIED</li>
+        <li>FAILED_CUTOVER_MUST_HAVE_DETERMINISTIC_RECOVERY_PATH</li>
+      </ul>
+      <p>Enforced in <code>internal/invariants</code> and chaos/fuzz suites.</p>
+    </article>
+  </main>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="shared.js"></script>
+</body>
+</html>

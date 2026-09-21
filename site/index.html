@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SDE v1.1 — Stateful Deployments Engine</title>
+  <meta name="description" content="General-purpose state lifecycle engine for volume-backed workloads. Independent project — not affiliated with Railway."/>
+  <meta property="og:title" content="Stateful Deployments Engine v1.1"/>
+  <meta property="og:description" content="Transactional cutover, portable State Archives, verified recovery."/>
+  <meta property="og:image" content="brand/social-preview.svg"/>
+  <link rel="icon" href="brand/favicon.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+
+  <section class="hero">
+    <div class="badges">
+      <span class="chip ok">v1.1.0 READY</span>
+      <span class="chip">Proprietary Pre-Acquisition</span>
+      <span class="chip warn">Not affiliated with Railway</span>
+    </div>
+    <h1>Blue/green semantics for workloads that own local state</h1>
+    <p class="lede">
+      A general-purpose state lifecycle engine: mutation journals, bounded cutover,
+      portable State Archives, fire drills, and verified recovery — for arbitrary
+      volume-backed workloads, not only databases.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="demo.html">Open live demo</a>
+      <a class="btn btn-ghost" href="proof.html">Proof GIFs</a>
+      <a class="btn btn-ghost" href="railway-fit.html">Railway fit</a>
+    </div>
+  </section>
+
+  <main>
+    <div class="notice">
+      Railway already provides volumes, backups, Postgres PITR, logical dumps, and live resize.
+      SDE addresses <strong>generic filesystem state mobility</strong>, deployment-safe cutover,
+      and <strong>ENGINE_PROVIDED</strong> archives that remain usable after a source environment disappears.
+    </div>
+
+    <article class="card" style="margin-top:1.5rem">
+      <h2>See it run</h2>
+      <div class="grid-2">
+        <a href="demo.html"><img src="demo-media/cutover-pipeline.gif" alt="Cutover pipeline demo GIF" width="100%" loading="lazy"/></a>
+        <a href="proof.html"><img src="demo-media/cli-doctor-demo.gif" alt="CLI doctor demo GIF" width="100%" loading="lazy"/></a>
+      </div>
+      <p style="margin-top:0.75rem">Measured local cutover: barrier ~16&nbsp;ms · write pause ~15&nbsp;ms · 129 mutations. <a href="proof.html">Proof pack →</a></p>
+    </article>
+
+    <div class="grid-2" style="margin-top:1.5rem">
+      <article class="card">
+        <h2>Evaluate locally</h2>
+        <p>One command builds, tests, migrates, restores, and writes receipts.</p>
+        <pre><code>.\evaluate.ps1
+# or: bash ./evaluate.sh</code></pre>
+      </article>
+      <article class="card">
+        <h2>Embed</h2>
+        <p>CLI · LIBRARY · CONTROL-PLANE modes. Versioned events for platform integration.</p>
+        <p><a href="https://github.com/theworker02/stateful-deployments-engine">Repository</a> ·
+           docs in-tree under <code>docs/</code></p>
+      </article>
+    </div>
+
+    <article class="card" style="margin-top:1.25rem">
+      <h2>Architecture at a glance</h2>
+      <pre style="background:#12201a;color:#c8e6d5;padding:1rem;border-radius:8px;overflow:auto">ACTIVE ──checkpoint──▶ SHADOW
+   │                      │
+ journal ◀────────── continuous replay
+   │                      │
+   └── barrier → final Δ → verify → cutover → observe → COMMIT
+                              │
+                     ENGINE_PROVIDED PSA → escrow / clone / fire-drill</pre>
+    </article>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Security · SDE v1.1</title>
+  <link rel="icon" href="brand/favicon.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <section class="hero">
+    <h1>Security</h1>
+    <p class="lede">Evidence statuses from the acquisition security review.</p>
+  </section>
+  <main>
+    <article class="card">
+      <table class="data">
+        <thead><tr><th>Area</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Stale epoch fencing</td><td>VERIFIED</td></tr>
+          <tr><td>Journal CRC / corruption detection</td><td>VERIFIED</td></tr>
+          <tr><td>UNKNOWN ≠ VERIFIED</td><td>VERIFIED</td></tr>
+          <tr><td>Ack-write rollback safety</td><td>VERIFIED</td></tr>
+          <tr><td>No secrets in repository</td><td>VERIFIED</td></tr>
+          <tr><td>PSA integrity</td><td>VERIFIED</td></tr>
+          <tr><td>Railway live GraphQL auth</td><td>VERIFIED (SDE_RAILWAY_LIVE=1)</td></tr>
+          <tr><td>Release signing</td><td>VERIFIED — Cosign keyless on GitHub Releases</td></tr>
+          <tr><td>Sole-author IP ownership</td><td>EXECUTED — acquisition/legal/</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:1rem">Details: <code>acquisition/SECURITY_REVIEW.md</code>, <code>acquisition/SECURITY_GOVULNCHECK.txt</code></p>
+    </article>
+  </main>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "archive_id": "psa-1789999860169080300",
+  "archive_stats": {
+    "LogicalBytes": 471,
+    "PhysicalBytes": 471,
+    "DedupSaved": 0,
+    "DurationMs": 15.278,
+    "Objects": 41,
+    "Chunks": 41
+  },
+  "clone_verified": true,
+  "fixture": {
+    "kind": "kv-fs",
+    "created_at": "2026-09-21T14:11:00.1421492Z",
+    "files": 40,
+    "bytes": 310,
+    "note": "universal volume fixture; no DB engine required"
+  },
+  "generated_at": "2026-09-21T14:11:00.4947082Z"
+}

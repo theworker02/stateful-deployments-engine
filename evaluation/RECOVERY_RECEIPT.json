@@ -1,0 +1,29 @@
+{
+  "receipt_id": "recv-1789999860175687900",
+  "created_at": "2026-09-21T14:11:00.1756879Z",
+  "mode": "ENGINE_PROVIDED",
+  "archive_id": "psa-1789999860169080300",
+  "source_digest": "5651174f079b9746c428749f23f8462bbfdeb7e0194193e0b9751eb84927625d",
+  "restored_digest": "5651174f079b9746c428749f23f8462bbfdeb7e0194193e0b9751eb84927625d",
+  "epoch": 1,
+  "journal_position": 1,
+  "target_name": "local-recovery",
+  "target_path": "evaluation\\.run\\restored\\restored-state",
+  "source_destroyed": true,
+  "verify_outcome": "VERIFIED",
+  "duration_ms": 30.797,
+  "capabilities_used": [
+    "CHECKSUM",
+    "BLOCK_READ",
+    "BLOCK_WRITE",
+    "ATOMIC_RENAME"
+  ],
+  "strategies": [
+    "baseline-copy",
+    "block-differential",
+    "checksum-verify",
+    "atomic-pointer-cutover"
+  ],
+  "evidence_hash": "0c8ebfacac5a4739fcea30e725b855d6a9f85bdced032f32bbe023523e49c5b4",
+  "human_summary": "ENGINE_PROVIDED restore archive=psa-1789999860169080300 epoch=1 digest_ok=true target=local-recovery"
+}

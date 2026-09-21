@@ -1,0 +1,13 @@
+{
+  "block_size": 65536,
+  "changed_blocks": 8,
+  "diff_bytes": 131072,
+  "diff_ms": 1.032,
+  "file_bytes": 16384,
+  "files": 80,
+  "full_bytes": 1310720,
+  "full_copy_ms": 351.925,
+  "generated_at": "2026-09-21T14:39:14.2756102Z",
+  "note": "measured locally by TestWriteDifferentialBenchResults; not fabricated",
+  "suite": "chunk_differential_v041"
+}

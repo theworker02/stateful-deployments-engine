@@ -1,0 +1,9 @@
+{
+  "consistency_ok": true,
+  "cutover_write_pause_ms": 3.115,
+  "deploy_id": "sde-1789999860225163600",
+  "from_image": "local/app:initial",
+  "mode": "LIBRARY",
+  "phase": "COMMITTED",
+  "to_image": "eval:v2"
+}

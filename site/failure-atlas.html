@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Failure Atlas · SDE v1.1</title>
+  <link rel="icon" href="brand/favicon.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <section class="hero">
+    <h1>Failure atlas</h1>
+    <p class="lede">Formal map from chaos scenarios to invariants and recovery. Full table in-repo.</p>
+  </section>
+  <main>
+    <article class="card">
+      <table class="data">
+        <thead><tr><th>Failure</th><th>Detection</th><th>Recovery</th></tr></thead>
+        <tbody>
+          <tr><td>Coordinator death</td><td>Persisted FSM + fence</td><td>resume / retry / abort</td></tr>
+          <tr><td>Journal corruption</td><td>CRC / parse fail</td><td>reject; no silent discard</td></tr>
+          <tr><td>Archive corruption</td><td>verify-archive</td><td>NOT_RECOVERABLE / partial</td></tr>
+          <tr><td>Verification mismatch</td><td>receipt FAILED</td><td>abort cutover</td></tr>
+          <tr><td>Cutover interrupt</td><td>phase persistence</td><td>deterministic recover path</td></tr>
+          <tr><td>New writes after cutover</td><td>ack classification</td><td>FORWARD_RECOVERY_REQUIRED</td></tr>
+          <tr><td>Lost source environment</td><td>independence test</td><td>PSA restore</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:1rem">Authoritative: <code>docs/FAILURE_ATLAS.md</code> · chaos receipts under evaluation / tests.</p>
+    </article>
+  </main>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="shared.js"></script>
+</body>
+</html>

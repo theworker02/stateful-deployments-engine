@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sde.local/schemas/migration-plan.schema.json",
+  "title": "MigrationPlan",
+  "type": "object",
+  "required": ["plan_id", "created_at", "conclusion", "rationale"],
+  "properties": {
+    "plan_id": { "type": "string" },
+    "source_slot_id": { "type": "string" },
+    "target_image": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "state_bytes": { "type": "integer", "minimum": 0 },
+    "object_count": { "type": "integer", "minimum": 0 },
+    "write_rate_ops_per_sec": { "type": "number" },
+    "strategies": { "type": "array", "items": { "type": "string" } },
+    "risks": { "type": "array", "items": { "type": "string" } },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "estimated_pause_ms": { "type": "number" },
+    "conclusion": {
+      "type": "string",
+      "enum": ["READY", "READY_WITH_RISK", "LIKELY_NON_CONVERGENT", "BLOCKED", "UNKNOWN"]
+    },
+    "rationale": { "type": "string" }
+  }
+}

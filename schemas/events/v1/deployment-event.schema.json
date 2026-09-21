@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/theworker02/stateful-deployments-engine/schemas/events/v1/deployment-event.schema.json",
+  "title": "SDE Deployment Event v1",
+  "type": "object",
+  "required": ["schema_version", "event"],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "event": {
+      "type": "object",
+      "required": ["at", "kind", "level", "message"],
+      "properties": {
+        "at": { "type": "string", "format": "date-time" },
+        "deploy_id": { "type": "string" },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "DeploymentStarted",
+            "DeploymentPlanReady",
+            "CheckpointCaptured",
+            "ShadowReady",
+            "SyncProgress",
+            "VerificationDone",
+            "CutoverStarted",
+            "CutoverCompleted",
+            "ObservationPassed",
+            "DeploymentCommitted",
+            "DeploymentAborted",
+            "RecoveryStarted",
+            "RecoveryCompleted",
+            "phase.enter",
+            "phase.exit",
+            "verify.result",
+            "receipt.sealed"
+          ]
+        },
+        "level": { "type": "string", "enum": ["info", "warn", "error", "ok"] },
+        "message": { "type": "string" },
+        "phase": { "type": "string" },
+        "fields": { "type": "object" }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "document": "SOLE_AUTHOR_IP_DECLARATION",
+  "status": "EXECUTED",
+  "executed_at": "2026-09-21",
+  "execution_method": "electronic_attestation_via_repository",
+  "product": "Stateful Deployments Engine",
+  "version": "1.1.0",
+  "covers_versions": ["1.0.0", "1.1.0"],
+  "owner": {
+    "legal_name": "Matthew Looney",
+    "github": "theworker02",
+    "email": "matthewlooney5@gmail.com"
+  },
+  "scope": [
+    "source",
+    "tests",
+    "documentation",
+    "schemas",
+    "brand_assets",
+    "benchmarks",
+    "site",
+    "acquisition_pack"
+  ],
+  "exclusions": [
+    "third_party_dependencies_per_SBOM"
+  ],
+  "path": "acquisition/legal/SOLE_AUTHOR_IP_DECLARATION.md",
+  "commercial_templates": "acquisition/legal-review/"
+}

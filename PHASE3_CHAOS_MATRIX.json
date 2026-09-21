@@ -1,0 +1,5 @@
+{
+  "note": "Regenerate with: sde chaos (writes benchmarks/results/chaos/matrix.json)",
+  "phase": 3,
+  "status": "see internal/chaos and testdata/chaos/matrix.json from thickness layer"
+}

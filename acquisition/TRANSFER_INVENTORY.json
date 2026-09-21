@@ -1,0 +1,21 @@
+{
+  "version": "1.1.0",
+  "generated_at": "2026-09-21",
+  "inventory": [
+    {"path": "cmd/", "type": "source"},
+    {"path": "internal/", "type": "source"},
+    {"path": "sdk/", "type": "source"},
+    {"path": "docs/", "type": "documentation"},
+    {"path": "site/", "type": "documentation"},
+    {"path": "assets/brand/", "type": "brand"},
+    {"path": "acquisition/", "type": "diligence"},
+    {"path": "schemas/", "type": "schemas"},
+    {"path": "examples/", "type": "examples"},
+    {"path": "scripts/", "type": "tooling"},
+    {"path": "LICENSE", "type": "legal"},
+    {"path": "go.mod", "type": "dependencies"},
+    {"path": "evaluate.ps1", "type": "harness"},
+    {"path": "evaluate.sh", "type": "harness"}
+  ],
+  "excluded": ["secrets", "customer_data", "railway_account_tokens"]
+}

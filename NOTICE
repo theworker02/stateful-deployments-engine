@@ -1,0 +1,22 @@
+# NOTICE
+
+Stateful Deployments Engine (SDE)  
+Copyright © 2026 Matthew Looney / theworker02 and project owners.
+
+This repository is distributed under the **Proprietary Pre-Acquisition License**
+in `LICENSE`. It is **not** Apache-2.0, MIT, BSD, GPL, or any other open-source
+license.
+
+- **No production use, redistribution, or commercialization** without a written
+  acquisition or commercial license agreement.
+- Limited viewing for evaluation / due diligence only — see `LICENSE` §3.
+- Acquisition brief: `ACQUISITION.md`
+- Security reports: `SECURITY.md`
+
+**Licensing & acquisition contact**
+
+- GitHub: [@theworker02](https://github.com/theworker02)
+- Email: matthewlooney5@gmail.com
+
+Third-party Go module licenses are listed in `THIRD_PARTY.md`. Those licenses
+apply only to the named dependencies, not to SDE itself.

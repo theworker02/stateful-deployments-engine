@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-09-21T06:44:38Z",
+  "version": "0.4.0",
+  "command": "go test ./... -count=1",
+  "result": "PASS",
+  "exit_code": 0,
+  "highlights": {
+    "internal/archive": "PASS (incl. TestRecoveryIndependence)",
+    "internal/coordinator": "PASS",
+    "internal/chaos": "PASS",
+    "internal/adapter/railway": "PASS",
+    "acquisition_demo": "PASS (go run ./examples/acquisition-demo)"
+  },
+  "notes": "Full package list reported green in CI-equivalent local run on windows/amd64 go1.26.3"
+}

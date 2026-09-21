@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "description": "Chaos scenario matrix for acquisition fault-injection evals",
+  "scenarios": [
+    {
+      "id": "kill-coordinator-during-sync",
+      "phase": "SYNCHRONIZING",
+      "inject": "process_kill",
+      "expect_detection": true,
+      "expect_recovery_action": "resume",
+      "profiles": ["SMALL", "MEDIUM"]
+    },
+    {
+      "id": "truncate-journal-mid-entry",
+      "phase": "SYNCHRONIZING",
+      "inject": "journal_truncate",
+      "fixture": "testdata/corruption/truncated-journal.ndjson",
+      "expect_detection": true,
+      "expect_recovery_action": "abort",
+      "profiles": ["SMALL"]
+    },
+    {
+      "id": "corrupt-candidate-file",
+      "phase": "VERIFYING",
+      "inject": "bit_flip",
+      "expect_detection": true,
+      "expect_recovery_action": "abort",
+      "profiles": ["DATABASE-LIKE"]
+    },
+    {
+      "id": "kill-during-cutover",
+      "phase": "CUTOVER",
+      "inject": "process_kill",
+      "expect_detection": true,
+      "expect_recovery_action": "retry",
+      "profiles": ["SMALL", "MEDIA-LIKE"]
+    },
+    {
+      "id": "post-cutover-health-fail",
+      "phase": "OBSERVING",
+      "inject": "health_fail",
+      "expect_detection": true,
+      "expect_recovery_action": "rollback",
+      "profiles": ["SMALL"]
+    },
+    {
+      "id": "writes-after-cutover-then-rollback-request",
+      "phase": "OBSERVING",
+      "inject": "accept_writes_then_request_rollback",
+      "expect_detection": true,
+      "expect_recovery_action": "request_reconciliation",
+      "profiles": ["LOG-LIKE"]
+    }
+  ]
+}

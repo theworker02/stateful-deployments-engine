@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Benchmarks · SDE v1.1</title>
+  <link rel="icon" href="brand/favicon.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <section class="hero">
+    <h1>Benchmarks</h1>
+    <p class="lede">Evidence-backed numbers from committed JSON. Never fabricated for the site.</p>
+  </section>
+  <main>
+    <div class="notice">Sources: <code>site/data/benchmarks.json</code>, <code>site/data/perf_gates.json</code> (copied from evaluation / benches at release).</div>
+    <article class="card">
+      <h2>Latest evaluation snapshot</h2>
+      <pre id="bench-out" class="log">Loading…</pre>
+    </article>
+    <article class="card" style="margin-top:1rem">
+      <h2>Perf regression gates</h2>
+      <pre id="gates-out" class="log">Loading…</pre>
+    </article>
+  </main>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="shared.js"></script>
+  <script>
+    async function loadJSON(path, el) {
+      try {
+        const r = await fetch(path);
+        if (!r.ok) throw new Error(r.statusText);
+        el.textContent = JSON.stringify(await r.json(), null, 2);
+      } catch (e) {
+        el.textContent = "Unavailable in this preview: " + e.message +
+          "\nRun evaluate locally to regenerate evaluation/ artifacts.";
+      }
+    }
+    loadJSON("data/benchmarks.json", document.getElementById("bench-out"));
+    loadJSON("data/perf_gates.json", document.getElementById("gates-out"));
+  </script>
+</body>
+</html>

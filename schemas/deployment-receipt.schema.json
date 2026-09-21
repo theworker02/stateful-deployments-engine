@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sde.local/schemas/deployment-receipt.schema.json",
+  "title": "DeploymentReceipt",
+  "type": "object",
+  "required": ["receipt_id", "deploy_id", "created_at", "final_phase", "evidence_hash"],
+  "properties": {
+    "receipt_id": { "type": "string" },
+    "deploy_id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "from_image": { "type": "string" },
+    "to_image": { "type": "string" },
+    "from_epoch": { "type": "integer", "minimum": 0 },
+    "to_epoch": { "type": "integer", "minimum": 0 },
+    "fence_token": { "type": "integer", "minimum": 0 },
+    "phases": { "type": "array", "items": { "type": "string" } },
+    "final_phase": { "type": "string" },
+    "mutations_synced": { "type": "integer", "minimum": 0 },
+    "final_delta_writes": { "type": "integer", "minimum": 0 },
+    "predicted_pause_ms": { "type": "number" },
+    "actual_pause_ms": { "type": "number" },
+    "cutover_write_pause_ms": { "type": "number" },
+    "rpo_mutations": { "type": "integer", "minimum": 0 },
+    "rto_seconds": { "type": "number" },
+    "dry_run": { "type": "boolean" },
+    "human_summary": { "type": "string" },
+    "evidence_hash": { "type": "string", "minLength": 64, "maxLength": 64 }
+  }
+}

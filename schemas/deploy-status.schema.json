@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sde.local/schemas/deploy-status.schema.json",
+  "title": "DeployStatus",
+  "type": "object",
+  "required": ["deploy_id", "phase"],
+  "properties": {
+    "deploy_id": { "type": "string" },
+    "phase": { "type": "string" },
+    "epoch": { "type": "integer" },
+    "fence_token": { "type": "integer" },
+    "active_slot_id": { "type": "string" },
+    "candidate_slot_id": { "type": "string" },
+    "sync_lag_ops": { "type": "integer" },
+    "cutover_write_pause_ms": { "type": "number" },
+    "healthy": { "type": "boolean" }
+  }
+}

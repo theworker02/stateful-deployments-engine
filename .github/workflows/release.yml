@@ -1,0 +1,51 @@
+name: release
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to release (e.g. v1.0.0)"
+        required: true
+permissions:
+  contents: write
+  id-token: write
+  packages: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22.x"
+      - name: Build
+        run: |
+          mkdir -p dist
+          GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o dist/sde-linux-amd64 ./cmd/sde
+          GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o dist/sde-windows-amd64.exe ./cmd/sde
+          GOOS=darwin GOARCH=amd64 go build -ldflags="-s -w" -o dist/sde-darwin-amd64 ./cmd/sde
+          GOOS=darwin GOARCH=arm64 go build -ldflags="-s -w" -o dist/sde-darwin-arm64 ./cmd/sde
+          cd dist && sha256sum sde-* > SHA256SUMS.txt
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+      - name: Sign artifacts (keyless OIDC)
+        env:
+          COSIGN_YES: "true"
+        run: |
+          cd dist
+          while read -r hash file; do
+            cosign sign-blob --yes --bundle "${file}.cosign.bundle" "$file"
+          done < SHA256SUMS.txt
+          cosign sign-blob --yes --bundle SHA256SUMS.txt.cosign.bundle SHA256SUMS.txt
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag || github.ref_name }}
+          files: |
+            dist/sde-*
+            dist/SHA256SUMS.txt
+            dist/*.cosign.bundle
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

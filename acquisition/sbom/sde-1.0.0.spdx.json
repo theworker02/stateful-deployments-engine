@@ -1,0 +1,54 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "stateful-deployments-engine-1.0.0",
+  "documentNamespace": "https://github.com/theworker02/stateful-deployments-engine/spdx/1.0.0",
+  "creationInfo": {
+    "created": "2026-09-21T00:00:00Z",
+    "creators": ["Tool: sde-manual-sbom", "Person: theworker02"]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-sde",
+      "name": "stateful-deployments-engine",
+      "versionInfo": "1.0.0",
+      "downloadLocation": "NOASSERTION",
+      "licenseConcluded": "LicenseRef-Proprietary-Pre-Acquisition",
+      "licenseDeclared": "LicenseRef-Proprietary-Pre-Acquisition",
+      "copyrightText": "Copyright Matthew Looney / theworker02"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-cobra",
+      "name": "github.com/spf13/cobra",
+      "versionInfo": "v1.8.1",
+      "downloadLocation": "https://github.com/spf13/cobra",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pflag",
+      "name": "github.com/spf13/pflag",
+      "versionInfo": "v1.0.5",
+      "downloadLocation": "https://github.com/spf13/pflag",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-yaml",
+      "name": "gopkg.in/yaml.v3",
+      "versionInfo": "v3.0.1",
+      "downloadLocation": "https://github.com/go-yaml/yaml",
+      "licenseConcluded": "MIT AND Apache-2.0",
+      "licenseDeclared": "MIT AND Apache-2.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-mousetrap",
+      "name": "github.com/inconshreveable/mousetrap",
+      "versionInfo": "v1.1.0",
+      "downloadLocation": "https://github.com/inconshreveable/mousetrap",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0"
+    }
+  ]
+}

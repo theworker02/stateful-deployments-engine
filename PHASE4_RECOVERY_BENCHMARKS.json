@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-09-21T06:44:38Z",
+  "version": "0.4.0",
+  "machine": "windows/amd64",
+  "measurements": {
+    "acquisition_demo_export": {
+      "logical_bytes": 8204,
+      "physical_bytes": 8204,
+      "dedup_bytes_saved": 0,
+      "note": "small unique payload; savings not fabricated"
+    },
+    "acquisition_demo_restore": {
+      "duration_ms": 3.084,
+      "verify_outcome": "VERIFIED",
+      "source_destroyed": true,
+      "mode": "ENGINE_PROVIDED"
+    },
+    "fire_drill": {
+      "duration_ms": 2.61,
+      "root_digest_ok": true,
+      "production_untouched": true
+    },
+    "benchmark_differential_transfer": {
+      "ns_op": 44717600,
+      "diff_bytes": 4097,
+      "diff_ms": 0.513
+    },
+    "recovery_independence_test": {
+      "result": "PASS",
+      "package": "internal/archive",
+      "test": "TestRecoveryIndependence"
+    }
+  },
+  "honesty": "All values measured in this session; never hard-coded marketing figures."
+}

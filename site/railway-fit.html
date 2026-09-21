@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Railway Fit · SDE v1.1</title>
+  <link rel="icon" href="brand/favicon.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <section class="hero">
+    <h1>Railway fit</h1>
+    <p class="lede">Independent project — not affiliated with Railway. Correct framing for evaluators.</p>
+  </section>
+  <main>
+    <div class="notice warn">
+      Do <strong>not</strong> pitch “Railway lacks backups.” Railway provides volumes, incremental/scheduled backups,
+      Postgres PITR, logical dumps, and live resize. Documented limits still include same-project/env native restore
+      and wipe removing volume backups.
+    </div>
+    <article class="card">
+      <h2>Value proposition</h2>
+      <p>A <strong>general-purpose state lifecycle engine</strong> for arbitrary volume-backed workloads:
+      deployment-safe mobility, ENGINE_PROVIDED portable archives, verified restoration, fire drills,
+      and transactional cutover beyond database-specific tooling.</p>
+    </article>
+    <article class="card" style="margin-top:1rem">
+      <h2>Capability split</h2>
+      <table class="data">
+        <thead><tr><th>Class</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><code>RAILWAY_NATIVE</code></td><td>Platform-owned backups/volumes as Railway documents them</td></tr>
+          <tr><td><code>ENGINE_PROVIDED</code></td><td>SDE portable PSA, clone, escrow, fire-drill — evaluable offline</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:1rem">Full matrix: in-repo <code>docs/RAILWAY_GAP_MATRIX.md</code>.</p>
+    </article>
+  </main>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="shared.js"></script>
+</body>
+</html>

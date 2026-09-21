@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Proof · SDE v1.1</title>
+  <link rel="icon" href="brand/favicon.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+
+  <section class="hero">
+    <div class="badges">
+      <span class="chip ok">MEASURED</span>
+      <span class="chip ok">v1.1.0 READY</span>
+    </div>
+    <h1>Proof pack</h1>
+    <p class="lede">
+      Visual and transcript evidence for diligence. Interactive Pages demo is labeled simulation;
+      numbers below come from a local <code>sde demo</code> + <code>sde doctor</code> + perf gates run.
+    </p>
+  </section>
+
+  <main>
+    <article class="card">
+      <h2>Measured cutover (local adapter)</h2>
+      <pre class="log">Deploying myapp
+✓ 129 mutations synchronized
+✓ Filesystem consistency verified
+✓ Final delta: 1 writes
+✓ State barrier: 16.342ms
+✓ Traffic transferred
+✓ STATEFUL ZERO-DOWNTIME DEPLOYMENT
+
+Barrier: 16.3416ms | Pause: 14.80ms | Synced: 129 | Final delta: 1 | Total: 2.165s</pre>
+      <p>Source transcript: <code>assets/demo/cli-demo-transcript.txt</code></p>
+    </article>
+
+    <article class="card" style="margin-top:1.25rem">
+      <h2>Doctor</h2>
+      <pre class="log">SDE doctor — 1.1.0 (READY)
+  ✓ engine                 sde 1.1.0 (READY)
+  ✓ runtime                windows/amd64
+  ✓ workspace              …/.sde-proof
+  i railway.live           offline / ENGINE_PROVIDED mode
+ready: yes</pre>
+    </article>
+
+    <article class="card" style="margin-top:1.25rem">
+      <h2>Demo GIFs</h2>
+      <div class="grid-2">
+        <img src="demo-media/cutover-pipeline.gif" alt="Cutover pipeline GIF" width="100%"/>
+        <img src="demo-media/cli-doctor-demo.gif" alt="CLI doctor demo GIF" width="100%"/>
+        <img src="demo-media/restore-independence.gif" alt="Restore independence GIF" width="100%"/>
+        <img src="demo-media/hero-card.png" alt="Hero card" width="100%"/>
+      </div>
+    </article>
+
+    <article class="card" style="margin-top:1.25rem">
+      <h2>Reproduce</h2>
+      <pre><code>.\scripts\install.ps1
+.\dist\sde.exe doctor
+.\dist\sde.exe demo --root .sde
+.\evaluate.ps1</code></pre>
+    </article>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="shared.js"></script>
+</body>
+</html>

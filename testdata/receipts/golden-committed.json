@@ -1,0 +1,22 @@
+{
+  "receipt_id": "rcpt-golden-001",
+  "deploy_id": "deploy-golden-001",
+  "created_at": "2026-01-15T12:00:00Z",
+  "from_image": "app:1.0.0",
+  "to_image": "app:1.1.0",
+  "from_epoch": 3,
+  "to_epoch": 4,
+  "fence_token": 12,
+  "phases": ["ACTIVE", "CHECKPOINT", "SHADOW", "SYNCHRONIZING", "VERIFYING", "QUIESCING", "FINAL_DELTA", "CUTOVER", "OBSERVING", "COMMITTED"],
+  "final_phase": "COMMITTED",
+  "mutations_synced": 14821,
+  "final_delta_writes": 17,
+  "predicted_pause_ms": 50,
+  "actual_pause_ms": 43,
+  "cutover_write_pause_ms": 43,
+  "rpo_mutations": 0,
+  "rto_seconds": 11.2,
+  "dry_run": false,
+  "human_summary": "deploy deploy-golden-001 app:1.0.0→app:1.1.0 phase=COMMITTED pause_ms=43.00 (predicted 50.00) mutations=14821 final_delta=17 dry_run=false",
+  "evidence_hash": "REPLACE_AT_TEST_TIME"
+}

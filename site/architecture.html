@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Architecture · SDE v1.1</title>
+  <link rel="icon" href="brand/favicon.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <section class="hero">
+    <h1>Architecture explorer</h1>
+    <p class="lede">Click a component. Core stays platform-independent; Railway is an adapter.</p>
+  </section>
+  <main>
+    <div class="arch-explorer" id="arch-nodes">
+      <div class="arch-node" data-id="core"><strong>CORE</strong><span>journal · fence · FSM</span></div>
+      <div class="arch-node" data-id="railway"><strong>RAILWAY ADAPTER</strong><span>ENGINE_PROVIDED + native gap</span></div>
+      <div class="arch-node" data-id="storage"><strong>STORAGE ADAPTER</strong><span>capabilities negotiation</span></div>
+      <div class="arch-node" data-id="archive"><strong>STATE ARCHIVE</strong><span>portable PSA</span></div>
+      <div class="arch-node" data-id="verify"><strong>VERIFICATION</strong><span>receipts · levels</span></div>
+      <div class="arch-node" data-id="recovery"><strong>RECOVERY</strong><span>fire-drill · forward</span></div>
+    </div>
+    <div id="arch-detail">Select a node to inspect its boundary.</div>
+    <article class="card" style="margin-top:1.25rem">
+      <h2>Control-plane embedding</h2>
+      <p><strong>CLI</strong> · <strong>LIBRARY</strong> (<code>internal/embed</code>) · <strong>CONTROL-PLANE</strong> (consume versioned events). No GUI required.</p>
+    </article>
+  </main>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="shared.js"></script>
+  <script>
+    const detail = {
+      core: "Platform-agnostic coordinator: epochs, fencing, mutation journal, sync, cutover barrier, observation, commit/abort/recover.",
+      railway: "Adapter only. ENGINE_PROVIDED clone/archive path is evaluable offline. Live GraphQL dual-service pilot needs Railway credentials (disclosed).",
+      storage: "Capability negotiation (SNAPSHOT, FREEZE, CHECKSUM, …). Strategies selected from real adapter capabilities — no fake universals.",
+      archive: "Portable State Archive: deterministic, checksummed, chunked, streamable. Survives source project/env destruction.",
+      verify: "METADATA / CHECKSUM / STRUCTURAL / APPLICATION_DEFINED. UNKNOWN is never treated as VERIFIED.",
+      recovery: "DR planner, fire drills, rollback vs forward recovery classification. Acknowledged writes are never silently discarded."
+    };
+    document.querySelectorAll(".arch-node").forEach((n) => {
+      n.addEventListener("click", () => {
+        document.querySelectorAll(".arch-node").forEach((x) => x.classList.remove("selected"));
+        n.classList.add("selected");
+        document.getElementById("arch-detail").textContent = detail[n.dataset.id] || "";
+      });
+    });
+  </script>
+</body>
+</html>

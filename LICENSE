@@ -1,0 +1,136 @@
+# Proprietary Pre-Acquisition License
+
+**Stateful Deployments Engine (SDE)**  
+Copyright © 2026 Matthew Looney / theworker02 and project owners.  
+All rights reserved.
+
+This is **not** an open-source license. This software is proprietary intellectual
+property offered for evaluation, acquisition diligence, and eventual sale or
+commercial licensing only.
+
+---
+
+## 1. Definitions
+
+- **"Software"** means the Stateful Deployments Engine source code, binaries,
+  documentation, designs, protocols, benchmarks, examples, trademarks, and any
+  related materials in this repository or distributed with it.
+- **"Owner"** means Matthew Looney (GitHub: `theworker02`) and any co-owners of
+  the Software.
+- **"You"** means any individual or entity that accesses, views, downloads, or
+  otherwise obtains the Software.
+- **"Agreement"** means a written acquisition agreement, asset purchase
+  agreement, commercial license agreement, or other written instrument executed
+  by the Owner that expressly grants rights in the Software.
+
+## 2. No License Granted
+
+Except for the limited evaluation permission in Section 3, **no license** is
+granted to You under any intellectual property right. Without a prior written
+Agreement executed by the Owner, You may **not**:
+
+- use the Software in any environment (including development, staging, or
+  production);
+- copy, modify, adapt, translate, or create derivative works of the Software;
+- distribute, publish, sublicense, lease, rent, sell, or otherwise transfer
+  the Software or any portion of it;
+- deploy, operate, host, or commercialize the Software or services based on it;
+- incorporate the Software into any product, platform, or offering;
+- reverse engineer, decompile, or disassemble the Software for the purpose of
+  building a competing product or replicating its protocols (except to the
+  limited extent that applicable law prohibits such restriction, and then only
+  for interoperability as required by law);
+- remove, alter, or obscure any copyright, patent, trademark, proprietary, or
+  confidentiality notices.
+
+**All rights not expressly granted in a written Agreement are reserved by the
+Owner.** Until sale or licensed grant, the Software remains the exclusive
+property of the Owner.
+
+## 3. Limited Evaluation / Due Diligence Viewing
+
+You may view and locally inspect the Software **solely** for:
+
+- personal technical evaluation of the concepts and architecture; and/or
+- bona fide acquisition, investment, or commercial-licensing due diligence
+
+—provided that You:
+
+1. keep the Software and any non-public materials confidential;
+2. do not use the Software to process production workloads or serve end users;
+3. do not share the Software outside Your evaluation team without the Owner’s
+   prior written consent;
+4. do not use evaluation access to design or ship a competing state-transition,
+   stateful cutover, or volume blue/green product based on this Software’s
+   proprietary protocols; and
+5. promptly destroy evaluation copies if You decide not to pursue an Agreement,
+   upon Owner’s request, or when diligence ends—whichever occurs first.
+
+This Section 3 does **not** authorize production use, redistribution, or any
+implied open-source grant.
+
+## 4. Contributions
+
+Any feedback, ideas, or code You submit is subject to `CONTRIBUTING.md`. Unless
+a separate Contributor License Agreement (CLA) or assignment is executed,
+submissions do not create joint ownership or an open-source license in Your
+favor. The Owner may use submissions under terms set out in the CLA / assignment.
+
+## 5. Trademarks
+
+“Stateful Deployments Engine”, “SDE”, and related marks are proprietary. No
+trademark license is granted by this document.
+
+## 6. Disclaimer of Warranty
+
+THE SOFTWARE IS PROVIDED **“AS IS”** AND **“AS AVAILABLE”**, WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+YOU ASSUME ALL RISK ARISING FROM ACCESS TO OR EVALUATION OF THE SOFTWARE.
+
+## 7. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE OWNER SHALL NOT BE LIABLE FOR ANY
+INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR
+ANY LOSS OF PROFITS, DATA, GOODWILL, OR BUSINESS INTERRUPTION, ARISING OUT OF OR
+RELATED TO THIS LICENSE OR THE SOFTWARE, WHETHER IN CONTRACT, TORT, OR
+OTHERWISE—EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THE OWNER’S
+AGGREGATE LIABILITY SHALL NOT EXCEED ONE HUNDRED U.S. DOLLARS (US $100) OR THE
+AMOUNT YOU PAID THE OWNER FOR THE SOFTWARE (IF ANY), WHICHEVER IS GREATER.
+
+## 8. Termination
+
+The limited permissions in Section 3 terminate automatically if You breach this
+License. Upon termination You must cease all use and destroy all copies of the
+Software in Your possession or control. Sections 2, 5, 6, 7, 9, and 10 survive
+termination.
+
+## 9. Governing Law
+
+This License is governed by the laws of the United States and the State of the
+Owner’s principal residence, without regard to conflict-of-law principles,
+except where mandatory local consumer law applies. Courts of competent
+jurisdiction in that venue shall have exclusive jurisdiction, subject to
+mandatory law.
+
+## 10. Entire Understanding; No Implied Rights
+
+This License, together with any written Agreement You execute with the Owner,
+constitutes the entire understanding regarding access to the Software. No rights
+are granted by implication, estoppel, or custom. Open-source licenses (including
+Apache-2.0, MIT, BSD, or GPL) do **not** apply to this Software.
+
+## 11. Licensing and Acquisition Inquiries
+
+For acquisition, commercial license, partnership, or diligence access beyond
+Section 3:
+
+- GitHub: [@theworker02](https://github.com/theworker02)
+- Email: matthewlooney5@gmail.com
+- Repository: https://github.com/theworker02/stateful-deployments-engine
+
+See also `ACQUISITION.md` and `NOTICE`.
+
+---
+
+**Proprietary Pre-Acquisition License — All Rights Reserved Until Sale.**
