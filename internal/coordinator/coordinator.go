@@ -341,65 +341,62 @@ func (c *Coordinator) Deploy(ctx context.Context, cfg Config) (*types.DeployRepo
 	}
 	barrierStart := time.Now()
 
-	// FINAL_DELTA
+	// FINAL_DELTA — drain journal under barrier until checksum match (or budget exhausted).
 	st.Phase = types.PhaseFinalDelta
 	report.Phase = types.PhaseFinalDelta
 	_ = c.persist(st)
 	var applied uint64
 	cursor := nextFrom
-	for {
-		final, err := c.journal.ReadFrom(cursor)
+	var postVR *types.VerificationReceipt
+	for round := 0; round < 64; round++ {
+		for {
+			final, err := c.journal.ReadFrom(cursor)
+			if err != nil {
+				_ = release()
+				return c.fail(report, st, start, err)
+			}
+			if len(final) == 0 {
+				break
+			}
+			n, err := replay.ApplyMutations(shadow.StatePath, final)
+			if err != nil {
+				_ = release()
+				return c.fail(report, st, start, err)
+			}
+			applied += n
+			cursor = final[len(final)-1].Seq + 1
+		}
+		var err error
+		postVR, err = verifier.Verify(active.StatePath, shadow.StatePath, c.journal.Epoch(), verifier.Options{
+			DeployID: report.DeployID,
+			Level:    types.VerifyChecksum,
+		})
 		if err != nil {
 			_ = release()
 			return c.fail(report, st, start, err)
 		}
-		if len(final) == 0 {
+		if verifier.IsVerified(postVR) {
 			break
 		}
-		n, err := replay.ApplyMutations(shadow.StatePath, final)
-		if err != nil {
+		// Rare race: mutation landed between empty-poll and verify; drain again.
+		if round == 63 {
 			_ = release()
-			return c.fail(report, st, start, err)
+			msg := "consistency failed after final delta"
+			if postVR != nil && postVR.EvidenceSummary != "" {
+				msg = postVR.EvidenceSummary
+			}
+			return c.fail(report, st, start, fmt.Errorf("%s", msg))
 		}
-		applied += n
-		cursor = final[len(final)-1].Seq + 1
 	}
 	report.FinalDeltaWrites = applied
 	st.FinalDeltaWrites = applied
 	st.JournalCursor = cursor
 	c.emit(types.PhaseFinalDelta, fmt.Sprintf("Final delta: %d writes", applied))
 
-	postVR, err := verifier.Verify(active.StatePath, shadow.StatePath, c.journal.Epoch(), verifier.Options{
-		DeployID: report.DeployID,
-		Level:    types.VerifyChecksum,
-	})
-	if err != nil || !verifier.IsVerified(postVR) {
-		_ = release()
-		msg := "consistency failed after final delta"
-		if postVR != nil {
-			msg = postVR.EvidenceSummary
-		}
-		if err != nil {
-			msg = err.Error()
-		}
-		return c.fail(report, st, start, fmt.Errorf("%s", msg))
-	}
 	report.Verification = postVR
 	st.Verification = postVR
 	report.ConsistencyOK = true
 	c.emit(types.PhaseVerifyConsistency, "Filesystem consistency verified")
-
-	// Residual drain
-	if residual, err := c.journal.ReadFrom(cursor); err == nil && len(residual) > 0 {
-		n, err := replay.ApplyMutations(shadow.StatePath, residual)
-		if err != nil {
-			_ = release()
-			return c.fail(report, st, start, err)
-		}
-		report.FinalDeltaWrites += n
-		st.FinalDeltaWrites = report.FinalDeltaWrites
-		cursor = residual[len(residual)-1].Seq + 1
-	}
 
 	actualPause := float64(time.Since(barrierStart).Microseconds()) / 1000.0
 	if actualPause > float64(cfg.MaxWritePause.Milliseconds()) {

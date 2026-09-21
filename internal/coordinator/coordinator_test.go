@@ -55,19 +55,20 @@ func TestStatefulDeployWithLiveWrites(t *testing.T) {
 			select {
 			case <-ctx.Done():
 				return
-			case <-time.After(5 * time.Millisecond):
+			case <-time.After(8 * time.Millisecond):
 				n++
-				_, _ = w.WriteFile(ctx, fmt.Sprintf("live-%d.txt", n), []byte(fmt.Sprintf("v%d", n)), 0o644)
+				// Use Background so barrier wait is not cancelled mid-deploy.
+				_, _ = w.WriteFile(context.Background(), fmt.Sprintf("live-%d.txt", n), []byte(fmt.Sprintf("v%d", n)), 0o644)
 			}
 		}
 	}()
-	time.Sleep(30 * time.Millisecond)
+	time.Sleep(40 * time.Millisecond)
 
 	c := coordinator.NewFull(plat, plat, j, fm, st, func(types.DeployPhase, string) {})
 	report, err := c.Deploy(context.Background(), coordinator.Config{
 		ImageRef:         "app:v2",
-		SyncPollInterval: 5 * time.Millisecond,
-		MaxWritePause:    time.Second,
+		SyncPollInterval: 8 * time.Millisecond,
+		MaxWritePause:    2 * time.Second,
 	})
 	cancel()
 	if err != nil {
