@@ -47,4 +47,4 @@ Independent project — not affiliated with Railway. No vanity numeric score.
 
 ## Diligence entrypoint
 
-[`acquisition/DUE_DILIGENCE_INDEX.md`](acquisition/DUE_DILIGENCE_INDEX.md)
+[`acquisition/DUE_DILIGENCE_INDEX.md`](acquisition/DUE_DILIGENCE_INDEX.md) · [`acquisition/EVALUATOR_BRIEF.md`](acquisition/EVALUATOR_BRIEF.md)

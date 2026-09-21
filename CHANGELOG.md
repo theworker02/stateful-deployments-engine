@@ -20,6 +20,8 @@ SDE is **proprietary** — see `LICENSE`.
 - End-frame freeze on proof GIFs (~3s) + interactive demo freeze on terminal states
 - Polished Pages media frames / figcaptions / FROZEN chips
 - `RELEASE_NOTES_v1.1.1.md` · SPDX `sde-1.1.1.spdx.json`
+- Expanded acquisition pack: `EVALUATOR_BRIEF`, `ACQUISITION_FAQ`, `INTEGRATION_PLAYBOOK`, `RISK_REGISTER`
+- Thickened technical DD, security review, Railway plan, transfer checklist, overview
 
 ### Changed
 

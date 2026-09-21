@@ -3,7 +3,7 @@
 **CONFIDENTIAL — Proprietary Pre-Acquisition Material**  
 Stateful Deployments Engine (SDE)  
 Owner: Matthew Looney / GitHub [`theworker02`](https://github.com/theworker02)  
-Status: **v1.1.0 READY** — core protocol + local adapter + live Railway GraphQL (opt-in) + CLI + evaluate + Pages proof  
+Status: **v1.1.1 FROZEN** — acquisition diligence freeze (core + live GraphQL opt-in + CLI + evaluate + Pages proof + expanded acquisition pack)  
 License: Proprietary — see `LICENSE`. No production use without a written Agreement.
 
 This document is an acquisition and diligence brief for platform-engineering and
@@ -149,12 +149,12 @@ See `ARCHITECTURE.md` and `docs/PROTOCOL.md`.
               (local | railway | fly | k8s | …)
 ```
 
-| Layer | Today (v0.1.0-dev) | Near-term |
+| Layer | Today (v1.1.1 FROZEN) | Near-term |
 |-------|--------------------|-----------|
-| **Core** | Coordinator, journal, replay, verifier, rollback | Hardened failure model, agent TTL, fault injection |
-| **Adapters** | `local` (demo/bench); `railway` typed stub | Railway GraphQL live client |
-| **Agent/SDK** | Local writer agent for demos | Production sidecar / language SDKs |
-| **CLI** | `sde demo`, `status`, `rollback` | Platform-native UX embedding |
+| **Core** | Coordinator, journal, replay, verifier, rollback, PSA/DR | Hardened pilot evidence, expanded fault injection |
+| **Adapters** | `local` full; `railway` live GraphQL (opt-in) | Production dual-service pilot |
+| **Agent/SDK** | Local writer agent + `sdk/go/sdesdk` | Production sidecar packaging |
+| **CLI** | Full deploy/DR/doctor/railway surface | Platform-native UX embedding |
 
 **Railway-first strategy:** dual-service / dual-volume under a stable public
 domain — legal under Railway’s “one volume per service” rule; never concurrent

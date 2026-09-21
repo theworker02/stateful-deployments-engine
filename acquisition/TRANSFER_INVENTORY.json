@@ -1,5 +1,6 @@
 {
-  "version": "1.1.0",
+  "version": "1.1.1",
+  "freeze_tag": "v1.1.1",
   "generated_at": "2026-09-21",
   "inventory": [
     {"path": "cmd/", "type": "source"},
@@ -8,6 +9,7 @@
     {"path": "docs/", "type": "documentation"},
     {"path": "site/", "type": "documentation"},
     {"path": "assets/brand/", "type": "brand"},
+    {"path": "assets/demo/", "type": "proof_media"},
     {"path": "acquisition/", "type": "diligence"},
     {"path": "schemas/", "type": "schemas"},
     {"path": "examples/", "type": "examples"},
@@ -15,7 +17,8 @@
     {"path": "LICENSE", "type": "legal"},
     {"path": "go.mod", "type": "dependencies"},
     {"path": "evaluate.ps1", "type": "harness"},
-    {"path": "evaluate.sh", "type": "harness"}
+    {"path": "evaluate.sh", "type": "harness"},
+    {"path": "RELEASE_NOTES_v1.1.1.md", "type": "release"}
   ],
   "excluded": ["secrets", "customer_data", "railway_account_tokens"]
 }
