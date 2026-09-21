@@ -52,17 +52,22 @@ def round_rect(dr, xy, fill, r=12):
     dr.rounded_rectangle(xy, radius=r, fill=fill)
 
 
-def save_gif(frames: list[Image.Image], path: Path, duration=450):
-    """duration is ms per frame; ~450–550 keeps phases readable."""
+def save_gif(frames: list[Image.Image], path: Path, duration=450, freeze_ms=2800):
+    """duration is ms per frame; last frame freezes for freeze_ms before loop."""
+    if not frames:
+        raise ValueError("no frames")
+    durations = [duration] * len(frames)
+    durations[-1] = freeze_ms
     frames[0].save(
         path,
         save_all=True,
         append_images=frames[1:],
-        duration=duration,
+        duration=durations,
         loop=0,
         optimize=True,
     )
-    print(f"wrote {path} ({len(frames)} frames @ {duration}ms)")
+    total = sum(durations) / 1000
+    print(f"wrote {path} ({len(frames)} frames, last freeze {freeze_ms}ms, ~{total:.1f}s)")
 
 
 def hold(frames: list[Image.Image], im: Image.Image, n: int):
@@ -143,16 +148,16 @@ def gif_cutover_pipeline():
             dr.text((500, yy), f"{mark}  {label}", fill=col, font=F16)
             yy += 36
 
-        # ~0.9s per phase; linger ~2.5s on COMMITTED
-        hold(frames, im, 1 if step < len(phases) else 5)
+        # ~0.9s per phase; linger on COMMITTED
+        hold(frames, im, 1 if step < len(phases) else 6)
 
-    save_gif(frames, OUT / "cutover-pipeline.gif", duration=480)
+    save_gif(frames, OUT / "cutover-pipeline.gif", duration=480, freeze_ms=3200)
 
 
 def gif_cli_doctor_demo():
     lines_seq = [
-        ["$ sde version", "sde 1.1.0"],
-        ["$ sde doctor", "SDE doctor — 1.1.0 (READY)", "  ✓ engine     sde 1.1.0 (READY)", "  ✓ runtime    windows/amd64", "  i railway    offline ENGINE_PROVIDED", "ready: yes"],
+        ["$ sde version", "sde 1.1.1"],
+        ["$ sde doctor", "SDE doctor — 1.1.1 (FROZEN)", "  ✓ engine     sde 1.1.1 (FROZEN)", "  ✓ runtime    windows/amd64", "  i railway    offline ENGINE_PROVIDED", "ready: yes"],
         ["$ sde demo --root .sde", "STATEFUL ZERO-DOWNTIME DEPLOYMENT", "checkpoint → sync → verify → barrier", "cutover → observe → COMMIT", "receipt: sealed"],
         ["$ sde readiness --root .sde", "DR scorecard: READY", "fire-drill path available", "PSA escrow catalog: present"],
     ]
@@ -171,7 +176,7 @@ def gif_cli_doctor_demo():
             y = 100
             for row in shown[-14:]:
                 color = ACCENT2 if row.startswith("$") else FG
-                if row.startswith("  ✓") or row.startswith("ready:") or "COMMIT" in row or "READY" in row:
+                if row.startswith("  ✓") or row.startswith("ready:") or "COMMIT" in row or "READY" in row or "FROZEN" in row:
                     color = OK
                 if row.startswith("sde "):
                     color = ACCENT2
@@ -181,7 +186,7 @@ def gif_cli_doctor_demo():
             hold(frames, im, 3 if line.startswith("$") else 2)
         # pause between command blocks
         hold(frames, frames[-1], 4)
-    save_gif(frames, OUT / "cli-doctor-demo.gif", duration=420)
+    save_gif(frames, OUT / "cli-doctor-demo.gif", duration=420, freeze_ms=3500)
 
 
 def gif_restore_independence():
@@ -235,9 +240,9 @@ def gif_restore_independence():
             yy += 28
 
         # ~1.1s per stage; longer hold on final receipt
-        hold(frames, im, 2 if i < len(stages) else 5)
+        hold(frames, im, 2 if i < len(stages) else 6)
 
-    save_gif(frames, OUT / "restore-independence.gif", duration=520)
+    save_gif(frames, OUT / "restore-independence.gif", duration=520, freeze_ms=3500)
 
 
 def still_hero_card():
@@ -249,7 +254,7 @@ def still_hero_card():
         dr.line((0, y, 1200, y), fill=(14, 34, 26))
     round_rect(dr, (60, 80, 1140, 550), PANEL, r=20)
     dr.text((100, 130), "Stateful Deployments Engine", fill=FG, font=F28)
-    dr.text((100, 180), "v1.1.0 READY  ·  Acquisition candidate", fill=ACCENT2, font=F18)
+    dr.text((100, 180), "v1.1.1 FROZEN  ·  Acquisition candidate", fill=ACCENT2, font=F18)
     dr.text((100, 240), "Transactional cutover for volume-backed workloads", fill=FG, font=F22)
     dr.text((100, 290), "Journal → sync → verify → barrier → cutover → observe → commit", fill=MUTED, font=F16)
     dr.text((100, 340), "ENGINE_PROVIDED Portable State Archives · fire drills · embed API", fill=MUTED, font=F16)

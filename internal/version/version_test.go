@@ -6,14 +6,14 @@ import (
 	"github.com/theworker02/stateful-deployments-engine/internal/version"
 )
 
-func TestVersionIsReady(t *testing.T) {
-	if version.Version != "1.1.0" {
-		t.Fatalf("version=%q want 1.1.0", version.Version)
+func TestVersionIsFrozen(t *testing.T) {
+	if version.Version != "1.1.1" {
+		t.Fatalf("version=%q want 1.1.1", version.Version)
 	}
-	if version.Codename != "READY" {
-		t.Fatalf("codename=%q want READY", version.Codename)
+	if version.Codename != "FROZEN" {
+		t.Fatalf("codename=%q want FROZEN", version.Codename)
 	}
-	if version.String() != "sde 1.1.0" {
+	if version.String() != "sde 1.1.1" {
 		t.Fatalf("String=%q", version.String())
 	}
 }

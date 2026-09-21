@@ -293,3 +293,50 @@ footer.site-footer {
 }
 code, pre code { font-family: var(--font-mono); }
 code { background: #e6eee9; padding: 0.1rem 0.3rem; border-radius: 3px; }
+
+/* Proof / demo media polish */
+figure {
+  margin: 0;
+  background: #12201a;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: #a8c4b6;
+  padding: 0.55rem 0.85rem 0.7rem;
+  background: #0e1a15;
+  border-top: 1px solid #1e3329;
+}
+.media-frame {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #12201a;
+  box-shadow: var(--shadow);
+}
+.media-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.chip.frozen {
+  border-color: var(--forest);
+  background: #e8f0eb;
+  color: var(--forest);
+  font-weight: 500;
+}
+.hero h1 { letter-spacing: -0.02em; }
+.btn { transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s; }
+.btn-primary:hover { transform: translateY(-1px); }
+.card img { border-radius: 8px; }

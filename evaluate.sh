@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 OUT="$ROOT/evaluation"
 RUN="$OUT/.run"
-VER="1.1.0"
+VER="1.1.1"
 mkdir -p "$OUT"
 rm -rf "$RUN"
 mkdir -p "$RUN"

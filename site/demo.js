@@ -137,11 +137,12 @@
       } else {
         log(`✓ ${p}`);
       }
-      await sleep(p === "SYNCHRONIZING" ? 650 : 380);
+      await sleep(p === "SYNCHRONIZING" ? 650 : p === "COMMITTED" ? 1200 : 380);
     }
     setMetric("m-result", "COMMITTED");
     setMetric("m-rpo", "0 mutations");
     renderPipeline(CUTOVER_PHASES, CUTOVER_PHASES.length, null);
+    await sleep(1800); // freeze on committed state
     setBusy(false);
   }
 
@@ -165,12 +166,13 @@
       } else {
         log(`✓ ${p}`);
       }
-      await sleep(420);
+      await sleep(p === "RECOVERY_RECEIPT" || p === "CLONE_RECEIPT" ? 900 : 420);
     }
     setMetric("m-result", "RECOVERABLE");
     setMetric("m-rpo", "epoch pinned");
     setMetric("m-pause", "n/a");
     renderPipeline(RESTORE_PHASES, RESTORE_PHASES.length, null);
+    await sleep(1600); // freeze on final receipt
     setBusy(false);
   }
 
@@ -204,13 +206,14 @@
     for (let i = 0; i < phases.length; i++) {
       renderPipeline(phases, i, null);
       log("✓ " + phases[i]);
-      await sleep(380);
+      await sleep(phases[i] === "CLONE_RECEIPT" ? 900 : 380);
     }
     setMetric("m-result", "CLONE_VERIFIED");
     setMetric("m-rpo", "new epoch id");
     setMetric("m-pause", "n/a");
     renderPipeline(phases, phases.length, null);
     log("\nCLONE_RECEIPT.json — production archive unchanged");
+    await sleep(1600); // freeze on clone receipt
     setBusy(false);
   }
 

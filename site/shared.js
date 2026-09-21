@@ -23,7 +23,7 @@
           <img src="brand/logo.svg" alt="SDE logo"/>
           <div class="brand-text">
             <strong>Stateful Deployments Engine</strong>
-            <span>v1.1.0 · independent · not affiliated with Railway</span>
+            <span>v1.1.1 · independent · not affiliated with Railway</span>
           </div>
         </a>
         <nav class="primary" aria-label="Primary">
@@ -41,7 +41,7 @@
     const host = document.getElementById("site-footer");
     if (!host) return;
     host.innerHTML = `
-      <p><strong>SDE v1.1.0 READY</strong> — browser pages are labeled simulations.
+      <p><strong>SDE v1.1.1 FROZEN</strong> — browser pages are labeled simulations.
       Local evaluation: <code>evaluate.ps1</code> / <code>evaluate.sh</code>.</p>
       <p>Independent project. Proprietary Pre-Acquisition License. No Railway trademarks used as branding.</p>`;
   }

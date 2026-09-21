@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 $Root = Join-Path $PSScriptRoot "evaluation\.run"
 $Out = Join-Path $PSScriptRoot "evaluation"
-$Ver = "1.1.0"
+$Ver = "1.1.1"
 New-Item -ItemType Directory -Force -Path $Out | Out-Null
 Remove-Item -Recurse -Force $Root -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path $Root | Out-Null

@@ -77,7 +77,7 @@ func main() {
 		"generated_at":   time.Now().UTC(),
 	})
 	writeJSON(filepath.Join(*out, "TEST_RESULTS.json"), map[string]interface{}{
-		"result": "PASS", "version": "1.1.0", "harness": "evaluate-harness",
+		"result": "PASS", "version": "1.1.1", "harness": "evaluate-harness",
 	})
 	fmt.Println("evaluate-harness OK →", *out)
 }

@@ -2,10 +2,10 @@
 package version
 
 // Version is the SemVer release string for CLI, receipts, SBOM, and docs.
-const Version = "1.1.0"
+const Version = "1.1.1"
 
 // Codename is a human-facing release designation.
-const Codename = "READY"
+const Codename = "FROZEN"
 
 // String returns "sde <version>".
 func String() string {

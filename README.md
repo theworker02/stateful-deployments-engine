@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <img alt="version" src="https://img.shields.io/badge/version-1.1.0-0B3D2E"/>
-  <img alt="status" src="https://img.shields.io/badge/status-READY-1F7A5C"/>
+  <img alt="version" src="https://img.shields.io/badge/version-1.1.1-0B3D2E"/>
+  <img alt="status" src="https://img.shields.io/badge/status-FROZEN-1F7A5C"/>
   <img alt="license" src="https://img.shields.io/badge/license-Proprietary%20Pre--Acquisition-red"/>
   <img alt="go" src="https://img.shields.io/badge/go-1.22+-00ADD8"/>
   <a href=".github/workflows/test.yml"><img alt="ci" src="https://img.shields.io/badge/ci-test.yml-1F7A5C"/></a>
@@ -97,4 +97,4 @@ Networking / tunnels / mesh: **out of scope** (separate project).
 - [Railway live](docs/RAILWAY_LIVE.md) · [Failure atlas](docs/FAILURE_ATLAS.md)
 - [Site](site/) · [Brand](docs/BRAND_GUIDELINES.md) · [Changelog](CHANGELOG.md)
 
-**Status:** **v1.1.0 READY** — acquisition verdict **READY**.
+**Status:** **v1.1.1 FROZEN** — acquisition verdict **READY**. Tag `v1.1.1` is the diligence freeze.

@@ -1,9 +1,9 @@
 # Acquisition Readiness Report
 
 **Product:** Stateful Deployments Engine (SDE)  
-**Version:** v1.1.0 READY  
+**Version:** v1.1.1 FROZEN  
 **Date:** 2026-09-21  
-**Verdict:** **READY**
+**Verdict:** **READY** (surface frozen at this tag for diligence)
 
 Independent project — not affiliated with Railway. No vanity numeric score.
 

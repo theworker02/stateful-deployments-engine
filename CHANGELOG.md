@@ -12,6 +12,20 @@ SDE is **proprietary** — see `LICENSE`.
 - Live dual-service pilot runbook with recorded credentials-free dry-run evidence
 - Counsel-reviewed definitive APA (templates remain in `legal-review/`)
 
+## [1.1.1] — 2026-09-21
+
+### Added
+
+- Acquisition **FROZEN** designation (`internal/version` codename)
+- End-frame freeze on proof GIFs (~3s) + interactive demo freeze on terminal states
+- Polished Pages media frames / figcaptions / FROZEN chips
+- `RELEASE_NOTES_v1.1.1.md` · SPDX `sde-1.1.1.spdx.json`
+
+### Changed
+
+- Version → **1.1.1** / codename **FROZEN**
+- Demo pacing held for readability; site proof presentation tightened
+
 ## [1.1.0] — 2026-09-21
 
 ### Added
