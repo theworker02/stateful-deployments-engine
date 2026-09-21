@@ -137,7 +137,7 @@
       } else {
         log(`✓ ${p}`);
       }
-      await sleep(p === "SYNCHRONIZING" ? 280 : 120);
+      await sleep(p === "SYNCHRONIZING" ? 650 : 380);
     }
     setMetric("m-result", "COMMITTED");
     setMetric("m-rpo", "0 mutations");
@@ -165,7 +165,7 @@
       } else {
         log(`✓ ${p}`);
       }
-      await sleep(140);
+      await sleep(420);
     }
     setMetric("m-result", "RECOVERABLE");
     setMetric("m-rpo", "epoch pinned");
@@ -204,7 +204,7 @@
     for (let i = 0; i < phases.length; i++) {
       renderPipeline(phases, i, null);
       log("✓ " + phases[i]);
-      await sleep(120);
+      await sleep(380);
     }
     setMetric("m-result", "CLONE_VERIFIED");
     setMetric("m-rpo", "new epoch id");

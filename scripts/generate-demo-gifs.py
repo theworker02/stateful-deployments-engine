@@ -52,7 +52,8 @@ def round_rect(dr, xy, fill, r=12):
     dr.rounded_rectangle(xy, radius=r, fill=fill)
 
 
-def save_gif(frames: list[Image.Image], path: Path, duration=120):
+def save_gif(frames: list[Image.Image], path: Path, duration=450):
+    """duration is ms per frame; ~450–550 keeps phases readable."""
     frames[0].save(
         path,
         save_all=True,
@@ -61,7 +62,14 @@ def save_gif(frames: list[Image.Image], path: Path, duration=120):
         loop=0,
         optimize=True,
     )
-    print(f"wrote {path} ({len(frames)} frames)")
+    print(f"wrote {path} ({len(frames)} frames @ {duration}ms)")
+
+
+def hold(frames: list[Image.Image], im: Image.Image, n: int):
+    """Hold a frame for n extra copies (slow pacing)."""
+    frames.append(im)
+    for _ in range(n):
+        frames.append(im.copy())
 
 
 def gif_cutover_pipeline():
@@ -78,7 +86,7 @@ def gif_cutover_pipeline():
     ]
     frames = []
     pause_ms = 0
-    for step in range(len(phases) + 4):
+    for step in range(len(phases) + 3):
         im, dr = new_frame()
         round_rect(dr, (24, 24, 936, 100), PANEL)
         dr.text((40, 40), "SDE · transactional cutover", fill=FG, font=F22)
@@ -135,13 +143,10 @@ def gif_cutover_pipeline():
             dr.text((500, yy), f"{mark}  {label}", fill=col, font=F16)
             yy += 36
 
-        frames.append(im)
-        # dwell on final
-        if step >= len(phases):
-            for _ in range(3):
-                frames.append(im.copy())
+        # ~0.9s per phase; linger ~2.5s on COMMITTED
+        hold(frames, im, 1 if step < len(phases) else 5)
 
-    save_gif(frames, OUT / "cutover-pipeline.gif", duration=180)
+    save_gif(frames, OUT / "cutover-pipeline.gif", duration=480)
 
 
 def gif_cli_doctor_demo():
@@ -172,11 +177,11 @@ def gif_cli_doctor_demo():
                     color = ACCENT2
                 dr.text((48, y), row[:90], fill=color, font=F16)
                 y += 26
-            frames.append(im)
-            frames.append(im.copy())
-        for _ in range(4):
-            frames.append(frames[-1].copy())
-    save_gif(frames, OUT / "cli-doctor-demo.gif", duration=140)
+            # commands linger longer than output lines
+            hold(frames, im, 3 if line.startswith("$") else 2)
+        # pause between command blocks
+        hold(frames, frames[-1], 4)
+    save_gif(frames, OUT / "cli-doctor-demo.gif", duration=420)
 
 
 def gif_restore_independence():
@@ -229,10 +234,10 @@ def gif_restore_independence():
             dr.text((60, yy), f"{mark} {title} — {detail}", fill=col, font=F16)
             yy += 28
 
-        frames.append(im)
-        for _ in range(3):
-            frames.append(im.copy())
-    save_gif(frames, OUT / "restore-independence.gif", duration=200)
+        # ~1.1s per stage; longer hold on final receipt
+        hold(frames, im, 2 if i < len(stages) else 5)
+
+    save_gif(frames, OUT / "restore-independence.gif", duration=520)
 
 
 def still_hero_card():
