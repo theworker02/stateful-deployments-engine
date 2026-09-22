@@ -1,5 +1,13 @@
 # Stateful Deployments Engine (SDE)
 
+
+---
+
+## License & acquisition
+
+This project is **proprietary**. Production use, redistribution, and commercial deployment require a written commercial license or completed acquisition. See [LICENSE](./LICENSE) and [ACQUISITION.md](./ACQUISITION.md). Contact [@theworker02](https://github.com/theworker02).
+
+
 <p align="center">
   <img src="assets/brand/logo.svg" alt="Stateful Deployments Engine" width="320"/>
 </p>
@@ -13,11 +21,11 @@
   <a href=".github/workflows/pages.yml"><img alt="pages" src="https://img.shields.io/badge/live%20demo-GitHub%20Pages-1F7A5C"/></a>
 </p>
 
-**Independent project — not affiliated with Railway.**
+**Independent project â€” not affiliated with Railway.**
 
 General-purpose **state lifecycle engine** for arbitrary volume-backed workloads:
 transactional cutover, mutation journals, portable State Archives, fire drills, and
-verified recovery — beyond database-specific backup tooling.
+verified recovery â€” beyond database-specific backup tooling.
 
 ## Get started in 5 minutes
 
@@ -53,7 +61,7 @@ Measured local cutover on evaluation host: **barrier ~16 ms**, **write pause ~15
   <img src="assets/demo/restore-independence.gif" alt="Source-independent restore" width="720"/>
 </p>
 
-Transcripts: [`assets/demo/`](assets/demo/) · Pages proof: [`site/proof.html`](site/proof.html)
+Transcripts: [`assets/demo/`](assets/demo/) Â· Pages proof: [`site/proof.html`](site/proof.html)
 
 ## Live demo (GitHub Pages)
 
@@ -66,35 +74,35 @@ Interactive browser simulation + proof GIFs:
 
 | Capability | Notes |
 |------------|--------|
-| Transactional deploy | Checkpoint → sync → verify → barrier → cutover → observe → commit |
+| Transactional deploy | Checkpoint â†’ sync â†’ verify â†’ barrier â†’ cutover â†’ observe â†’ commit |
 | Portable State Archive | ENGINE_PROVIDED; usable after source env destruction |
 | Fire drills / DR plan | Isolated restore verification + readiness scorecard |
-| Embed modes | CLI · LIBRARY · CONTROL-PLANE (`internal/embed`) |
+| Embed modes | CLI Â· LIBRARY Â· CONTROL-PLANE (`internal/embed`) |
 | Railway | Live GraphQL when `SDE_RAILWAY_LIVE=1`; offline ENGINE_PROVIDED by default |
-| Operator UX | `sde doctor` · `sde railway status --probe` · install scripts |
+| Operator UX | `sde doctor` Â· `sde railway status --probe` Â· install scripts |
 
 Railway already offers volumes, backups, Postgres PITR, logical dumps, and live resize.
 SDE targets **generic FS/state mobility** and independent escrowed recovery. See
 [`docs/RAILWAY_GAP_MATRIX.md`](docs/RAILWAY_GAP_MATRIX.md).
 
-**License:** Proprietary Pre-Acquisition — [`LICENSE`](./LICENSE).  
-**Acquisition:** [`ACQUISITION_READINESS_REPORT.md`](./ACQUISITION_READINESS_REPORT.md) — **READY**
+**License:** Proprietary Pre-Acquisition â€” [`LICENSE`](./LICENSE).  
+**Acquisition:** [`ACQUISITION_READINESS_REPORT.md`](./ACQUISITION_READINESS_REPORT.md) â€” **READY**
 
 ## Architecture
 
 ```
-App → journal → ACTIVE volume
-             ↘ shadow sync → verify → barrier → cutover → observe → commit
-             ↘ ENGINE_PROVIDED PSA → escrow / clone / fire-drill
+App â†’ journal â†’ ACTIVE volume
+             â†˜ shadow sync â†’ verify â†’ barrier â†’ cutover â†’ observe â†’ commit
+             â†˜ ENGINE_PROVIDED PSA â†’ escrow / clone / fire-drill
 ```
 
 Networking / tunnels / mesh: **out of scope** (separate project).
 
 ## Documentation
 
-- [Getting started](docs/GETTING_STARTED.md) · [Quick start](docs/QUICKSTART.md) · [CLI](docs/CLI.md)
-- [15-minute demo](docs/ACQUISITION_DEMO.md) · [Integration API](docs/INTEGRATION_API.md)
-- [Railway live](docs/RAILWAY_LIVE.md) · [Failure atlas](docs/FAILURE_ATLAS.md)
-- [Site](site/) · [Brand](docs/BRAND_GUIDELINES.md) · [Changelog](CHANGELOG.md)
+- [Getting started](docs/GETTING_STARTED.md) Â· [Quick start](docs/QUICKSTART.md) Â· [CLI](docs/CLI.md)
+- [15-minute demo](docs/ACQUISITION_DEMO.md) Â· [Integration API](docs/INTEGRATION_API.md)
+- [Railway live](docs/RAILWAY_LIVE.md) Â· [Failure atlas](docs/FAILURE_ATLAS.md)
+- [Site](site/) Â· [Brand](docs/BRAND_GUIDELINES.md) Â· [Changelog](CHANGELOG.md)
 
-**Status:** **v1.1.1 FROZEN** — acquisition verdict **READY**. Tag `v1.1.1` is the diligence freeze.
+**Status:** **v1.1.1 FROZEN** â€” acquisition verdict **READY**. Tag `v1.1.1` is the diligence freeze.
